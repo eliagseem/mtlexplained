@@ -12,14 +12,15 @@
 
 <body>
 
-<div ng-app='img2fire'>
+<div ng-app='angularFire'>
   <div ng-controller='base64Ctrl'>
     <div class="container-fluid">
       <p class="text-info" align="center">Upload ur fuckin pic</p>
       <hr />
 
-      <form ng-submit="uploadFile()">
+      <form ng-submit="uploadPost()">
         <input type="file" name="file" class="inputimg" id="nameImg" accept="image/*">
+        <input type="text" name="description" id="nameDescription">
         <br />
         <span class="input-group-btn">
                 <button  type="submit" class="btn btn-block">Upload Image 

@@ -1,21 +1,20 @@
-var img2fire = angular.module('img2fire', ['firebase', 'angular.filter']);
+var angularFire = angular.module('angularFire', ['firebase', 'angular.filter']);
 
-img2fire.controller("base64Ctrl", function($scope, $firebaseArray) {
+angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
   
   var ref = new Firebase("https://mtlexplained.firebaseio.com/");
 
-  var img = new Firebase("https://mtlexplained.firebaseio.com/images");
+  var post = new Firebase("https://mtlexplained.firebaseio.com/posts");
   
-  $scope.imgs = $firebaseArray(img);
-
-  console.log(ref);
+  $scope.posts = $firebaseArray(post);
 
   var _validFileExtensions = [".jpg", ".jpeg", ".bmp", ".gif", ".png"];
 
-  $scope.uploadFile = function() {
+  $scope.uploadPost = function() {
 
     var sFileName = $("#nameImg").val();
-
+    var description = $("#nameDescription").val();
+    
     if (sFileName.length > 0) {
 
       var blnValid = false;
@@ -31,7 +30,6 @@ img2fire.controller("base64Ctrl", function($scope, $firebaseArray) {
           
           if (filesSelected.length > 0) {
             var fileToLoad = filesSelected[0];
-
             var fileReader = new FileReader();
 
             fileReader.onload = function(fileLoadedEvent) {
@@ -40,9 +38,11 @@ img2fire.controller("base64Ctrl", function($scope, $firebaseArray) {
               );
 
 
-              $scope.imgs.$add({
+              $scope.posts.$add({
                 date: Firebase.ServerValue.TIMESTAMP,
-                base64: fileLoadedEvent.target.result
+                base64: fileLoadedEvent.target.result,
+                description: description,
+                location: 'Montreal'
               });
             };
 
@@ -61,12 +61,12 @@ img2fire.controller("base64Ctrl", function($scope, $firebaseArray) {
     return true;
   }
 
-  $scope.deleteimg = function(imgid) {
+  $scope.deletepost = function(postid) {
     var r = confirm("Do you want to remove this image ?");
     if (r == true) {
-      $scope.imgs.forEach(function(childSnapshot) {
-        if (childSnapshot.$id == imgid) {
-            $scope.imgs.$remove(childSnapshot).then(function(ref) {
+      $scope.posts.forEach(function(childSnapshot) {
+        if (childSnapshot.$id == postid) {
+            $scope.posts.$remove(childSnapshot).then(function(ref) {
               ref.key() === childSnapshot.$id; // true
             });
         }

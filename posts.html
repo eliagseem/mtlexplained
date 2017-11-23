@@ -12,13 +12,15 @@
 
 <body>
 
-<div ng-app='img2fire'>
+<div ng-app='angularFire'>
   <div ng-controller='base64Ctrl'>
     <div class="container-fluid">
 
-      <div ng-repeat="img in imgs | toArray | orderBy: '-date'" class="col-xs-12 col-sm-6 col-md-3">
-        <img ng-src="{{img.base64}}">
-        <a class="btn btn-danger btn-block" ng-click="deleteimg(img.$id)">Delete</a>
+      <div ng-repeat="post in posts | toArray | orderBy: '-date'" class="col-xs-12 col-sm-6 col-md-3">
+        <img ng-src="{{post.base64}}">
+        Description: {{post.description}}<br>
+        Location: {{post.location}}        
+        <a class="btn btn-danger btn-block" ng-click="deletepost(post.$id)">Delete</a>
       </div>
       
     </div>
