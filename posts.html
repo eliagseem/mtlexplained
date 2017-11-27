@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>MONTRAL EXPLAIMED</title>
+  <title>MONTRAL EXPLAINED</title>
   
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
   <link rel='stylesheet prefetch' href='https://fezvrasta.github.io/bootstrap-material-design/dist/css/bootstrap-material-design.css'>
@@ -19,7 +19,8 @@
       <div ng-repeat="post in posts | toArray | orderBy: '-date'" class="col-xs-12 col-sm-6 col-md-3">
         <img ng-src="{{post.base64}}">
         Description: {{post.description}}<br>
-        Location: {{post.location}}        
+        Location coprds: {{post.location}}<br>
+        Location: {{post.locName}}            
         <a class="btn btn-danger btn-block" ng-click="deletepost(post.$id)">Delete</a>
       </div>
       

@@ -21,3 +21,8 @@ input[type=file] {
     -webkit-border-radius: 5px;
     border-radius: 5px; 
 }
+
+.map{
+  height:50%;
+  width:50%;
+}

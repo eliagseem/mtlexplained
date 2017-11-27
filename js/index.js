@@ -37,12 +37,12 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
                 "textAreaFileContents"
               );
 
-
               $scope.posts.$add({
                 date: Firebase.ServerValue.TIMESTAMP,
                 base64: fileLoadedEvent.target.result,
                 description: description,
-                location: 'Montreal'
+                location: userLoc,
+                locName: 'Montreal'
               }).then(() =>{
                 window.location.href = './posts.html';                
               });
@@ -74,6 +74,6 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
         }
       });
     }
-  }
+  }    
 
 });

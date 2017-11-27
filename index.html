@@ -18,6 +18,8 @@
       <p class="text-info" align="center">MTL Explained Image Upload  Feat. Firebase and Post Malone</p>
       <hr />
 
+      <div id="map"></div>      
+      
       <form ng-submit="uploadPost()">
         <input type="file" name="file" class="inputimg" id="nameImg" accept="image/*">
         <input type="text" name="description" id="nameDescription">
@@ -33,11 +35,15 @@
   </div>
 
   <script src="js/jquery.min.js"></script>
+  <script src="js/mapscript.js"></script>  
   <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js'></script>
   <script src='https://cdn.firebase.com/js/client/2.2.4/firebase.js'></script>
   <script src="js/angularfire.min.js"></script>
   <script  src="js/index.js"></script>
+  <script async defer src='https://maps.googleapis.com/maps/api/js?key=&callback=initMap'>
+  </script>
+  <!-- <script src="style.json"></script> -->
 
 </body>
 </html>
