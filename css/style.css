@@ -14,5 +14,10 @@ img{
 }
 
 input[type=file] {
-    margin: 0 auto;
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor: hand;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
 }

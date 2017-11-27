@@ -43,6 +43,8 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
                 base64: fileLoadedEvent.target.result,
                 description: description,
                 location: 'Montreal'
+              }).then(() =>{
+                window.location.href = './posts.html';                
               });
             };
 
@@ -67,7 +69,7 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
       $scope.posts.forEach(function(childSnapshot) {
         if (childSnapshot.$id == postid) {
             $scope.posts.$remove(childSnapshot).then(function(ref) {
-              ref.key() === childSnapshot.$id; // true
+              ref.key() === childSnapshot.$id;
             });
         }
       });
