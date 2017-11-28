@@ -8,10 +8,7 @@
 }
 
 .custom-file-upload {
-  display: inline-block;
-  cursor: pointer;
-  color: black;
-  margin: 0 auto;
+  display:none;
 }
 
 .mapBottom {
