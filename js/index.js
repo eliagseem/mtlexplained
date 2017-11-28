@@ -3,7 +3,6 @@ var angularFire = angular.module('angularFire', ['firebase', 'angular.filter']);
 angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
   
   var ref = new Firebase("https://mtlexplained.firebaseio.com/");
-
   var post = new Firebase("https://mtlexplained.firebaseio.com/posts");
   
   $scope.posts = $firebaseArray(post);
@@ -14,7 +13,7 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
 
     var sFileName = $("#nameImg").val();
     var description = $("#nameDescription").val();
-    
+    console.log(sFileName);
     if (sFileName.length > 0) {
 
       var blnValid = false;
@@ -42,7 +41,7 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
                 base64: fileLoadedEvent.target.result,
                 description: description,
                 location: userLoc,
-                locName: 'Montreal'
+                locName: locTag
               }).then(() =>{
                 window.location.href = './posts.html';                
               });
@@ -74,6 +73,6 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
         }
       });
     }
-  }    
+  }
 
 });

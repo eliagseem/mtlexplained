@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+
+textarea {
+	width: 500px;
+	height: 70px;
+	object-position: center;
+	align-items: center;
+}

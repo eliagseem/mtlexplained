@@ -1,8 +1,4 @@
-
-userLoc: "";
-locTag: "";
-
-var map, infoWindow;
+  var map, infoWindow;
   function initMap() {
     //MARKER POSITIONS
     var entry1 = {lat: 45.49, lng: -73.58};
@@ -224,7 +220,22 @@ var map, infoWindow;
         icon: 'user.png'
         });
 
-        userLoc = pos;
+        var geocoder = new google.maps.Geocoder;                
+        geocoder.geocode({'location': pos}, function(results, status) {
+            if (status === 'OK') {
+              if (results[0]) {
+
+                console.log('hi there');
+                locTag = results[0].formatted_address;
+                userLoc = pos;
+
+              } else {
+                window.alert('No results found');
+              }
+            } else {
+              window.alert('Geocoder failed due to: ' + status);
+            }
+        });
 
         infoWindow.setPosition(pos);
         map.setCenter(pos);

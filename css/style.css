@@ -1,10 +1,4 @@
-p{
-  font-weight: bold;
-  font-size: 2.5em;
-  padding-top: 40px;
-}
-
-img{
+.postImage{
   cursor:pointer;
   width: 100%; 
   height: 100%;
@@ -13,16 +7,22 @@ img{
   border-width: medium;
 }
 
-input[type=file] {
-    padding:5px 15px; 
-    background:#ccc; 
-    border:0 none;
-    cursor: hand;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
+.custom-file-upload {
+  display: inline-block;
+  cursor: pointer;
+  color: black;
+  margin: 0 auto;
 }
 
-.map{
-  height:50%;
-  width:50%;
+.mapBottom {
+  width:100%;
+  height:100%;
+  background-color: #E21A2B;
+  color: white;
+	font-family: oswald;
+	font-size: 20px;
+}
+
+#map {
+  height: 90%;
 }
