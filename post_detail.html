@@ -1,23 +1,22 @@
-<!DOCTYPE html>
-<html lang="en" >
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>MONTRAL EXPLAINED</title>
-  
-  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-  <link rel='stylesheet prefetch' href='https://fezvrasta.github.io/bootstrap-material-design/dist/css/bootstrap-material-design.css'>
-  <link rel="stylesheet" href="css/style.css">
-  
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<link rel='stylesheet prefetch' href='https://fezvrasta.github.io/bootstrap-material-design/dist/css/bootstrap-material-design.css'>
+<meta charset="utf-8">
+<title>Post</title>
+<link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
+	<div class="page">
+		<div class="map"><a href="map.html"><img src="images/backw.png" alt="back" width="auto" height="50"></a></div>
+		<div class="settings"><img src="images/settingsw.png" alt="settings" width="auto" height="60"></div>
 
-<div ng-app='angularFire'>
-  <div ng-controller='base64Ctrl'>
-    <div class="container-fluid">
-        <script>
+		<script>
             post = "";
 
             var url_string = window.location.href;
@@ -31,30 +30,133 @@
                     
                     if(item.key() == c){
                         post = item.val();
-                        console.log(post.base64);
-                        document.getElementById("postId").src=post.base64;
+						document.getElementById("postId").src=post.base64;
+						document.getElementsByClassName("commentLocation").innerHTML=post.locName;
+						document.getElementsByClassName("commentDesc").innerHTML=post.description;
+
                     }
                 });
             });
             </script>
 
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <img id="postId" class="postImage">
-        
-        {{post.description}}<br>
-        Location: {{post.locName}}            
-        <a class="btn btn-danger btn-block" ng-click="deletepost(post.$id)">Delete</a>
-      </div>
-      
-    </div>
-  </div>
+	<div class="postImg"><img id="postId" width="100%" height="100%"></div>
 
-  <script src="js/jquery.min.js"></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js'></script>
-  <script src='https://cdn.firebase.com/js/client/2.2.4/firebase.js'></script>
-  <script src="js/angularfire.min.js"></script>
-  <script  src="js/index.js"></script>
+	<div class="commentBar">
+		<div class="commentPP"><img src="images/profile_pic.png" alt="Profile Photo" width="auto" height="auto"></div>
+		<div class="commentPad"></div>
+		<div class="commentDesc">walking in the park near maisonneuve when I came across this thing. super escher but what on earth is it?</div>
+		<div class="commentUser">ROSEFORMYLOVE</div>
+		<div class="commentInfo"> | ACTOR</div>
+		<div class="postloc"><img src="images/postloc.png" alt="map" width="auto" height="auto">
+			<div class="commentLocation">Corner of x and x, May 21 2017</div>
+		</div>
+	</div>
+
+	<!--FIRST COMMENT-->
+	<div class="commenterBox">
+		<div class="ratingBox">
+				<div class="rating" id="ratingnumber">12</div>
+				<div class="triangles">
+					<div class="triangle-up" onclick="counter()"></div>
+					<div class="triangle-down" onclick="uncounter()"></div>
+				</div>
+			</div>
+
+			<div class="commentDesc">It’s called Revolutions. This sculpture was inspired by the exterior winding staircases central to Montreal’s identity. By forming a knot, the staircase deconstructs the symbolism of vertical ascension with which it is usually associated.</div>
+			<div class="commentUser">WALKER</div>
+			<div class="commentInfoV"> | VERIFIED TOUR GUIDE</div>
+			<div class="commentDesc"><div class="lineBreak"></div></div>
+		</div>
+
+		<!--SECOND COMMENT-->
+				<div class="commenterBox">
+					<div class="ratingBox">
+							<div class="rating">3</p></div>
+							<div class="triangles">
+								<div class="triangle-up"></div>
+								<div class="triangle-down"></div>
+							</div>
+						</div>
+
+						<div class="commentDesc">I was just a lad when this was built! The lovely Revolutions</div>
+						<div class="commentUser">ROCKINMYBOOTS</div>
+						<div class="commentInfo"> | VETERAN</div>
+						<div class="commentDesc"><div class="lineBreak"></div></div>
+					</div>
+
+					<!--THIRD COMMENT-->
+							<div class="commenterBox">
+								<div class="ratingBox">
+										<div class="rating">2</p></div>
+										<div class="triangles">
+											<div class="triangle-up"></div>
+											<div class="triangle-down"></div>
+										</div>
+									</div>
+
+									<div class="commentDesc">It was built in 2003!.</div>
+									<div class="commentUser">FUNCHICK</div>
+									<div class="commentInfo"> | DOG WALKER</div>
+									<div class="commentDesc"><div class="lineBreak"></div></div>
+							</div>
+
+							<!--FOURTH COMMENT-->
+									<div class="commenterBox">
+										<div class="ratingBox">
+												<div class="rating">-10</p></div>
+												<div class="triangles">
+													<div class="triangle-up"></div>
+													<div class="triangle-down"></div>
+												</div>
+											</div>
+
+											<div class="commentDesc">ugh this thing is such an eyesore. I don't understand why these metal scraps litter the city.</div>
+											<div class="commentUser">MEATMAN</div>
+											<div class="commentInfo"> | CERTIFIED COMPLAINER</div>
+											<div class="commentDesc"><div class="lineBreak"></div></div>
+									</div>
+
+
+	<div class="buffer"></div>
+	<a class="commentButton" href="comment.html">COMMENT</a>
+</div>
+
+
+<!--SUBMIT
+	<div>
+		<textarea name="comments" id="comments" style="font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif';font-size: 1.2 em;">answer the question</textarea>
+	</div>
+	<input type="submit" value="Submit">
+-->
+
+<script>
+var add = (function () {
+    var counter = 12;
+    return function () {return counter += 1;}
+})();
+
+var subtract = (function () {
+    var counter = 12;
+    return function () {return counter -= 1;}
+})();
+
+function counter(){
+    document.getElementById("ratingnumber").innerHTML = add();
+}
+
+function uncounter(){
+    document.getElementById("ratingnumber").innerHTML = subtract();
+}
+</script>
+
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js'></script>
+<script src='https://cdn.firebase.com/js/client/2.2.4/firebase.js'></script>
+<script src="js/angularfire.min.js"></script>
+<script  src="js/index.js"></script>
 
 </body>
 </html>
