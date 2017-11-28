@@ -1,11 +1,146 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en" >
 <head>
-<meta charset="utf-8">
-<title>Map</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+  <meta charset="UTF-8">
+  <title>Montreal Explained</title>
+  
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+  <link rel='stylesheet prefetch' href='https://fezvrasta.github.io/bootstrap-material-design/dist/css/bootstrap-material-design.css'>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">  
+  
 </head>
 
 <body>
+    <script src="js/globals.js"></script>      
+    
+    <div id="map"></div>
+    <script>
+      var infoWindow;
+      function initMap() {
+        //MARKER POSITIONS
+        var entry1 = {lat: 45.49, lng: -73.58};
+        var entry2 = {lat: 45.5, lng: -73.59};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 45.53, lng: -73.69},
+          zoom: 11,
+          mapTypeId: 'roadmap',
+          styles: mapStyle
+        });
+
+        infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            //add user marker
+            /* var marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            icon: 'user.png'
+            }); */
+
+            //geocoder to get a name from the current pos!
+            var geocoder = new google.maps.Geocoder;                
+            geocoder.geocode({'location': pos}, function(results, status) {
+                if (status === 'OK') {
+                  if (results[0]) {
+
+                    locTag = results[0].formatted_address;
+                    userLoc = pos;
+
+                  } else {
+                    window.alert('No results found');
+                  }
+                } else {
+                  window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+
+            //INSERTS ONE MARKER
+            var entryimg = 'circle.png';
+            var ref =  new Firebase("https://mtlexplained.firebaseio.com/").child('/posts').orderByChild('date');
+            ref.once('value',function(snap) {
+                snap.forEach(function(item) {
+                    var itemVal = item.val();
+
+                    var marker = new google.maps.Marker({
+                      position: itemVal.location,
+                      map: map,
+                      icon: entryimg
+                    });
+
+                    google.maps.event.addListener(marker, 'click', function() {
+                      window.location.href = './post_detail.html?postId=' + item.key();
+                    });
+                });
+            });
+
+            infoWindow.setPosition(pos);
+            map.setCenter(pos);
+            map.setZoom(16);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      //doesn't work
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+    </script>
+
+<!--AIzaSyBojJTaBY1BRYTSukQgz0RvSaLet5_6T9s-->
+    </script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaknuIOBkAdCMqHfUT7lJjjGvH2ClPjJQ&callback=initMap">
+    </script>
+
+
+<script src="style.json"></script>
+
+<div ng-app='angularFire'>
+    <div ng-controller='base64Ctrl'>
+      <div class="container-fluid">
+        
+        <div class="mapBottom">
+          <form ng-submit="uploadPost()">
+            <label for="file-upload" class="custom-file-upload">
+                <i class="material-icons">camera</i>
+            </label>
+            <input type="file" name="file" class="inputimg" id="nameImg" accept="image/*"/>
+            <input type="text" name="description" id="nameDescription">
+            <br />
+            <span class="input-group-btn">
+              <button  type="submit" class="button">
+                <i class="material-icons">send</i>
+              </button>
+            </span>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js'></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.4/firebase.js'></script>
+    <script src="js/angularfire.min.js"></script>
+    <script  src="js/index.js"></script>
+
+
 </body>
 </html>
