@@ -63,7 +63,7 @@
 						$scope.post = snapshot.val();
 						snapshot.ref().child("comments").push({
 							"username" : window.localStorage.getItem('userName'),
-								"role" : "Student",
+								"role" : window.localStorage.getItem('userRole'),
 								"rating" : 0,
 								"cDescription": userText
 						});

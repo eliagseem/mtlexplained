@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Oswald:200,500" rel="stylesheet">
+<meta charset="utf-8">
+<link rel="stylesheet" href="iama.css" />
+<title>Montreal Explained</title>
+<script>
+    function setUserRole() {
+      var uRole = "";
+      uRole = document.getElementById("userRoleField").value;
+
+      if(uRole == "") {
+        uRole = "Student";
+      }
+
+      window.localStorage.setItem('userRole', uRole);
+      window.location.href = "map.html";
+    }
+  </script>
+</head>
+
+<body>
+<div class="bg"></div>
+  <div class="container">
+    <div class="textContainer">
+      <div class="desc">tell us a bit about yourself</div>
+      <div class="iAmA">I am a...</div>
+	     <input type="text" placeholder="" id="userRoleField" name="uname" required>
+       <div class="rule"></div>
+	  <a onclick="setUserRole()"><button type="submit">LET'S GO</button></a>
+  </div>
+</body>
+</html>

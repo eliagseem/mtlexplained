@@ -1,0 +1,123 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	font-family: 'Oswald', sans-serif;
+}
+
+
+body, html {
+	height:100%;
+	margin:0 auto;
+	padding:0;
+	color: #fff;
+	font-family: 'Oswald', sans-serif;
+	background:gray;
+
+}
+
+.bg {
+	background: red; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(#9b030f, #E21A2B); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#9b030f, #E21A2B); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#9b030f, #E21A2B); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#9b030f, #E21A2B); /* Standard syntax */
+	width:100%;
+	height:100%;
+}
+
+/* Add padding to containers */
+.container {
+	position: absolute;
+	margin: 0 auto;
+	top: 20%;
+	left: 15%;
+	width: 70%;
+}
+
+/*Text*/
+.desc {
+	display:block;
+	text-align: center;
+	width:100%;
+	padding:0;
+	margin:0;
+	border: none;
+	font-weight:200;
+	font-size: 60px;
+	color: #fff;
+	padding-bottom: 20%;
+}
+
+.iAmA {
+	display:inline-block;
+	width:18%;
+	padding:0;
+	margin:0;
+	border: none;
+	background: transparent;
+	font-weight:200;
+	font-size: 30px;
+	color: #fff;
+}
+
+
+/* Full-width inputs */
+input[type=text] {
+	display:inline-block;
+	width:80%;
+  padding:0;
+	margin:0;
+	border: none;
+	background: transparent;
+	font-weight:200;
+	font-size: 30px;
+	color: #fff;
+}
+
+::-webkit-input-placeholder { /* Chrome/Safari */
+	color: white;
+	font-size: 16px;
+}
+
+::-moz-placeholder { /* Firefox */
+	color: white;
+	font-size: 16px;
+}
+
+input:focus {
+	outline:none;
+}
+
+
+.rule {
+	width:100%;
+	background: white;
+	height:3px;
+	margin-top: 20px;
+}
+
+/* Set a style for all buttons */
+button {
+	margin: 0 auto;
+  background-color: transparent;
+	border:3px solid white;
+  padding: 5px;
+  margin: 200px 0;
+  cursor: pointer;
+  width: 100%;
+	font-weight:500;
+	font-size: 80px;
+	font-family: 'Oswald', sans-serif;
+
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+a, button {
+	color: white;
+	text-decoration: none;
+}
