@@ -69,7 +69,7 @@
             ref.once('value',function(snap) {
                 snap.forEach(function(item) {
                     var itemVal = item.val();
-
+                    
                     var marker = new google.maps.Marker({
                       position: itemVal.location,
                       map: map,

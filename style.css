@@ -342,22 +342,21 @@ p {
 	text-align: center;
 	margin:auto;
 	padding:0;
-	padding-top:5px;
-	padding-bottom:15px;
 	z-index: 100;
 }
 
 
 .inputCommentBox {
-	padding-top:20px;
-	padding-bottom:20px;
-	padding-left:60px;
-	padding-right:60px;
+	margin-top: 20px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	padding-right:5px;
 	background:#F2F2F2;
 	margin:0 auto;
-	margin-top: 60px;
-	width:60%;
-	height:400px;
+	width:70%;
+	height:99%;
+	float:left;
 }
 
 
@@ -375,6 +374,15 @@ textarea {
 	color: black;
 }
 
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover{
+	text-decoration: none;
+	color: gray;
+}
 
 textarea:focus, input:focus{
     outline: 0;
