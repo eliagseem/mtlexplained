@@ -1,5 +1,6 @@
 userLoc = "";
 locTag = "";
+
 map = "";
 mapStyle = [
     {

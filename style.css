@@ -346,6 +346,22 @@ p {
 	float:right;
 }
 
+.bottomButton {
+	position: fixed;
+	bottom:0;
+	height:150px;
+	width:100%;
+	background:#E21A2B;
+	color:white;
+	font-size: 100px;
+	text-align: center;
+	margin:auto;
+	padding:0;
+	padding-top:5px;
+	padding-bottom:15px;
+	z-index: 100;
+}
+
 .inputCommentBox {
 	margin-top: 20px;
 	padding-top:10px;
@@ -392,4 +408,29 @@ textarea:focus, input:focus{
 	margin:auto;
 	padding:0;
 	z-index: 100;
+}
+
+/*UPLOAD PAGE*/
+.weNeedInfo {
+	margin: 0;
+	padding: 0;
+	display: block;
+	text-align: center;
+	color: black;
+	font-size: 60px;
+	font-weight:200;
+	position: relative;
+	padding-top:6%;
+}
+
+.inputCaptionBox {
+	padding-top:20px;
+	padding-bottom:20px;
+	padding-left:60px;
+	padding-right:60px;
+	background:#F2F2F2;
+	margin:0 auto;
+	margin-top: 60px;
+	width:60%;
+	height:50%;
 }

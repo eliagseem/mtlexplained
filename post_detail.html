@@ -15,8 +15,9 @@
 <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 <link rel='stylesheet prefetch' href='https://fezvrasta.github.io/bootstrap-material-design/dist/css/bootstrap-material-design.css'>
 <meta charset="utf-8">
-<title>Post</title>
+<title>Montreal Explained</title>
 <link href="style.css" rel="stylesheet" type="text/css">
+<script src="js/globals.js"></script>      
 </head>
 
 <body>
@@ -25,8 +26,8 @@
 		<div class="settings"><img src="images/settingsw.png" alt="settings" width="auto" height="60"></div>
 
 		<script>
-			var app = angular.module('postDetails', []);
-			app.controller('detailsController', function($scope) {
+			var app = angular.module('postDetails', ['firebase', 'angular.filter']);
+			app.controller('detailsController', function($scope, $firebaseArray) {
 			$scope.post = "";
 
 			var url_string = window.location.href;
@@ -40,7 +41,7 @@
 					/* does not exist */
 				} else {
 					$scope.post = snapshot.val();
-					$scope.commentsList = $scope.post.comments;
+					$scope.commentsList = $firebaseArray(snapshot.ref().child("comments"));
 					$scope.$apply();
 
 					// setting all the poster information!
@@ -56,18 +57,16 @@
 			$scope.postcomment = function() {
 				$scope.ref2.once('value', function(snapshot) {
 					if(snapshot.val() === null ) {
-						/* does not exist */
+						// it doesn't exist, do nothing!!
 					} else {
 						userText = document.getElementById("commentArea").value;
 						$scope.post = snapshot.val();
 						snapshot.ref().child("comments").push({
-							"username" : "Ali Egseem",
-								"role" : "Pepperoni Paradox",
+							"username" : window.localStorage.getItem('userName'),
+								"role" : "Student",
 								"rating" : 0,
 								"cDescription": userText
 						});
-
-						location.reload();
 					}
 				});
 			}
@@ -77,19 +76,19 @@
 	<div class="postImg"><img id="postId" width="100%" height="100%"></div>
 
 	<div class="commentBar">
-		<div class="commentPP"><img id="profilePic" src="images/profile_pic.png" alt="Profile Photo" width="100%" height="100%"></div>
+		<div class="commentPP"><img id="profilePic" src="images/profile_pic_placeholder.png" alt="Profile Photo" width="100%" height="100%"></div>
 		<div class="commentPad"></div>
 		<div id="postComment" class="commentDesc"></div>
 		<div id="postUser" class="commentUser"></div>
 		<div id="postRole" class="commentInfo"></div>
-		<div class="postloc"><img src="images/postloc.png" alt="map" width="auto" height="auto">
+		<div class="postloc"><img src="images/postloc.png" alt="map" width="auto" height="auto" style="padding-bottom:15px;">
 			<div id="locationName" class="commentLocation"></div>
 		</div>
 	</div>
 
 	<div ng-app='postDetails'>
 	<div ng-controller="detailsController">	
-		<div ng-repeat="comment in commentsList">
+		<div ng-repeat="comment in commentsList | toArray | orderBy: '-rating'">
 			<div class="commenterBox">
 					<div class="ratingBox">
 						<div class="rating" id="ratingnumber">{{comment.rating}}</div>

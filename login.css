@@ -101,18 +101,19 @@ a, button {
 	text-decoration: none;
 }
 
+.loginOptbox {
+	margin: auto;
+	width: 100%
+}
+
 .fb {
-	margin: 0 auto;
-	padding-left: 40%;
-	width: 60%;
-	height: 60%;
+	display: inline-block;
+	margin-left: 40%;
 }
 
 .google {
-	margin: 0 auto;
-	padding-left: 40%;
-	width: 60%;
-	height: 60%;
+	display: inline-block;
+	margin-left: 7%;
 }
 
 .loginOpt {
@@ -120,4 +121,9 @@ a, button {
 	text-align: center;
 	font-size: 17px;
 	width: 100%;
+	margin-top: 5%;
+}
+
+input:focus {
+	outline:none;
 }
