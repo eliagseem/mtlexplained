@@ -40,7 +40,9 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
                 base64: fileLoadedEvent.target.result,
                 description: description,
                 location: userLoc,
-                locName: locTag
+                locName: locTag,
+                role: 'Student',
+                username: 'presentation4u'
               }).then(result =>{
                 window.location.href = './post_detail.html?postId=' + result.key();            
               });

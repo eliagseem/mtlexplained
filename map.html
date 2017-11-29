@@ -69,7 +69,7 @@
             ref.once('value',function(snap) {
                 snap.forEach(function(item) {
                     var itemVal = item.val();
-                    
+
                     var marker = new google.maps.Marker({
                       position: itemVal.location,
                       map: map,
@@ -84,7 +84,7 @@
 
             infoWindow.setPosition(pos);
             map.setCenter(pos);
-            map.setZoom(16);
+            map.setZoom(10);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
@@ -116,7 +116,23 @@
     <div ng-controller='base64Ctrl'>
       <div class="container-fluid">
         
-        <div class="mapBottom">
+        	<div class="postArea">
+              <form ng-submit="uploadPost()">
+                  <label for="file-upload" class="custom-file-upload">
+                      <i class="material-icons">camera</i>
+                  </label>
+                  <input type="file" name="file" class="inputimg" id="nameImg" accept="image/*"/>
+                  <input type="text" name="description" id="nameDescription">
+                  <br />
+                  <span class="input-group-btn">
+                    <button  type="submit" class="button">
+                      <i class="material-icons">send</i>
+                    </button>
+                  </span>
+                </form>
+        </div>
+
+        <!-- <div class="mapBottom">
           <form ng-submit="uploadPost()">
             <label for="file-upload" class="custom-file-upload">
                 <i class="material-icons">camera</i>
@@ -130,7 +146,7 @@
               </button>
             </span>
           </form>
-        </div>
+        </div>-->
       </div>
     </div>
 

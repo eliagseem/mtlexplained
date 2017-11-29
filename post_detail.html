@@ -25,51 +25,59 @@
 		<div class="settings"><img src="images/settingsw.png" alt="settings" width="auto" height="60"></div>
 
 		<script>
-			commentsList = "";
-			var app = angular.module('plunker', []);
-			
-			app.controller('MainCtrl', function($scope) {
+			var app = angular.module('postDetails', []);
+			app.controller('detailsController', function($scope) {
+			$scope.post = "";
 
-			post = "";
+			var url_string = window.location.href;
+			var url = new URL(url_string);
+			var c = url.searchParams.get("postId");
+						
+			$scope.ref2 =  new Firebase("https://mtlexplained.firebaseio.com/").child('/posts').child(c);
 
-            var url_string = window.location.href;
-            var url = new URL(url_string);
-            var c = url.searchParams.get("postId");
-            			
-			var ref2 =  new Firebase("https://mtlexplained.firebaseio.com/").child('/posts').child(c);
-			ref2.once('value', function(snapshot) {
-
+			$scope.ref2.once('value', function(snapshot) {
 				if(snapshot.val() === null ) {
 					/* does not exist */
 				} else {
-					post = snapshot.val();
-					//snapshot.ref().update({"postID": postID});
-					/* snapshot.ref().child("comments").push({
-						"username" : "theartfreak",
-							"role" : "VERIFIED TOUR GUIDE",
-							"rating" : 122,
-							"cDescription": "Woah that's it lol... thats arts"
-					}
-					); */
-					$scope.commentsList = snapshot.val().comments;
+					$scope.post = snapshot.val();
+					$scope.commentsList = $scope.post.comments;
 					$scope.$apply();
-					document.getElementById("postId").src=post.base64;
-					document.getElementById("locationName").innerHTML=post.locName;
-					document.getElementById("postComment").innerHTML=post.description;
-					document.getElementById("postRole").innerHTML=post.role;
-					document.getElementById("postUser").innerHTML=post.username;
-					}
-				});
 
-
+					// setting all the poster information!
+					document.getElementById("postId").src=$scope.post.base64;
+					document.getElementById("profilePic").src=$scope.post.profilePic;
+					document.getElementById("locationName").innerHTML=$scope.post.locName;
+					document.getElementById("postComment").innerHTML=$scope.post.description;
+					document.getElementById("postRole").innerHTML=" | " + $scope.post.role;
+					document.getElementById("postUser").innerHTML=$scope.post.username;
+				}
 			});
 
+			$scope.postcomment = function() {
+				$scope.ref2.once('value', function(snapshot) {
+					if(snapshot.val() === null ) {
+						/* does not exist */
+					} else {
+						userText = document.getElementById("commentArea").value;
+						$scope.post = snapshot.val();
+						snapshot.ref().child("comments").push({
+							"username" : "Ali Egseem",
+								"role" : "Pepperoni Paradox",
+								"rating" : 0,
+								"cDescription": userText
+						});
+
+						location.reload();
+					}
+				});
+			}
+		});
 		</script>
 
 	<div class="postImg"><img id="postId" width="100%" height="100%"></div>
 
 	<div class="commentBar">
-		<div class="commentPP"><img src="images/profile_pic.png" alt="Profile Photo" width="auto" height="auto"></div>
+		<div class="commentPP"><img id="profilePic" src="images/profile_pic.png" alt="Profile Photo" width="100%" height="100%"></div>
 		<div class="commentPad"></div>
 		<div id="postComment" class="commentDesc"></div>
 		<div id="postUser" class="commentUser"></div>
@@ -79,8 +87,8 @@
 		</div>
 	</div>
 
-	<div ng-app='plunker'>
-	<div ng-controller="MainCtrl">	
+	<div ng-app='postDetails'>
+	<div ng-controller="detailsController">	
 		<div ng-repeat="comment in commentsList">
 			<div class="commenterBox">
 					<div class="ratingBox">
@@ -98,45 +106,37 @@
 			</div>						
 		</div>
 		
-	</div>
 
 	<div class="buffer"></div>
 
 	<div class="commentButton">
-		<a href="post.html" style="float:right;text-align:left;">POST</a>			
+		<a ng-click="postcomment()" style="padding-left:25px;">POST</a>			
 		<div class="inputCommentBox">			
-			<textarea rows="4" cols="50" name="comment" form="usrform" maxlength="200" placeholder="answer the question"
+			<textarea id="commentArea" rows="4" cols="50" name="comment" form="usrform" maxlength="200" placeholder="answer the question"
 			onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" ></textarea>
 		</div>
 	</div>
-</div>
-
-
-<!--SUBMIT
-	<div>
-		<textarea name="comments" id="comments" style="font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif';font-size: 1.2 em;">answer the question</textarea>
 	</div>
-	<input type="submit" value="Submit">
--->
+	</div>
 
 <script>
-var add = (function () {
-    var counter = 12;
-    return function () {return counter += 1;}
-})();
+	var add = (function () {
+		var counter = 12;
+		return function () {return counter += 1;}
+	})();
 
-var subtract = (function () {
-    var counter = 12;
-    return function () {return counter -= 1;}
-})();
+	var subtract = (function () {
+		var counter = 12;
+		return function () {return counter -= 1;}
+	})();
 
-function counter(){
-    document.getElementById("ratingnumber").innerHTML = add();
-}
+	function counter(){
+		document.getElementById("ratingnumber").innerHTML = add();
+	}
 
-function uncounter(){
-    document.getElementById("ratingnumber").innerHTML = subtract();
-}
+	function uncounter(){
+		document.getElementById("ratingnumber").innerHTML = subtract();
+	}
 </script>
 
 </div>

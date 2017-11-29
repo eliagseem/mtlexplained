@@ -171,8 +171,8 @@ p {
 	float: left;
 	margin: 0;
 	padding: 0;
-	width:200px;
-	height:200px;
+	width:23%;
+	height:100%;
 	padding-right:20px;
 }
 
@@ -339,12 +339,12 @@ p {
 	background:#E21A2B;
 	color:white;
 	font-size: 100px;
-	text-align: center;
+	text-align: left;
 	margin:auto;
 	padding:0;
 	z-index: 100;
+	float:right;
 }
-
 
 .inputCommentBox {
 	margin-top: 20px;
@@ -354,8 +354,8 @@ p {
 	padding-right:5px;
 	background:#F2F2F2;
 	margin:0 auto;
-	width:70%;
-	height:99%;
+	width:75%;
+	height:100%;
 	float:left;
 }
 
@@ -374,20 +374,22 @@ textarea {
 	color: black;
 }
 
-a {
-	text-decoration: none;
-	color: white;
-}
-
-a:hover{
-	text-decoration: none;
-	color: gray;
-}
-
 textarea:focus, input:focus{
     outline: 0;
 }
 
 *:focus {
     outline: 0;
+}
+
+.postArea {
+	position: fixed;
+	height:10%;
+	width:100%;
+	background:#E21A2B;
+	color:white;
+	font-size: 20px;
+	text-align: center;
+	margin:auto;
+	z-index: 100;
 }
