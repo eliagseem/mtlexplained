@@ -11,7 +11,7 @@
   
 </head>
 
-<body>
+<body style="background:#E21A2B;">
     <script src="js/globals.js"></script>      
     
     <div id="map"></div>
@@ -113,20 +113,19 @@
 <script src="style.json"></script>
 
 <div ng-app='angularFire'>
-    <div ng-controller='base64Ctrl'>
-      <div class="container-fluid">
-        
+    <div ng-controller='base64Ctrl'>        
         	<div class="postArea">
               <form ng-submit="uploadPost()">
-                  <label for="file-upload" class="custom-file-upload">
-                      <i class="material-icons">camera</i>
+                  <label for="nameImg" class="column-left">
+                      <i class="material-icons icon">camera</i>
                   </label>
-                  <input type="file" name="file" class="inputimg" id="nameImg" accept="image/*"/>
-                  <input type="text" name="description" id="nameDescription">
-                  <br />
-                  <span class="input-group-btn">
-                    <button  type="submit" class="button">
-                      <i class="material-icons">send</i>
+                  <input type="file" class="inputfile" name="file" id="nameImg" accept="image/*"/>
+                  <textarea name="description" id="nameDescription" class="column-center"
+                  maxlength="200" placeholder="insert caption" rows="2"
+                  onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" ></textarea>
+                  <span class="input-group-btn column-right">
+                    <button type="submit" class="column-right">
+                      <i class="material-icons icon">send</i>
                     </button>
                   </span>
                 </form>
@@ -147,7 +146,6 @@
             </span>
           </form>
         </div>-->
-      </div>
     </div>
 
     <script src="js/jquery.min.js"></script>
