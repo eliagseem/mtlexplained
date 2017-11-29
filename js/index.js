@@ -42,7 +42,8 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
                 location: userLoc,
                 locName: locTag,
                 role: 'Student',
-                username: 'presentation4u'
+                username: 'presentation4u',
+                profilePic: 'https://68.media.tumblr.com/avatar_d5db9f21cb9c_128.png'
               }).then(result =>{
                 window.location.href = './post_detail.html?postId=' + result.key();            
               });
