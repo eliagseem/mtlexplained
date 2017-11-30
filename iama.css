@@ -18,12 +18,13 @@ body, html {
 
 .bg {
 	background: red; /* For browsers that do not support gradients */
-	background: -webkit-linear-gradient(#9b030f, #E21A2B); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(#9b030f, #E21A2B); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#9b030f, #E21A2B); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(#9b030f, #E21A2B); /* Standard syntax */
+	background: -webkit-linear-gradient(#808080, #C0C0C0); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#808080, #C0C0C0); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#808080, #C0C0C0); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#808080, #C0C0C0); /* Standard syntax */
 	width:100%;
 	height:100%;
+	background-size: cover;
 }
 
 /* Add padding to containers */
@@ -73,6 +74,7 @@ input[type=text] {
 	font-weight:200;
 	font-size: 30px;
 	color: #fff;
+	text-transform: uppercase;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Safari */
@@ -97,13 +99,27 @@ input:focus {
 	margin-top: 20px;
 }
 
+.notif {
+	display:block;
+	text-align: center;
+	width:100%;
+	padding:0;
+	margin:0;
+	border: none;
+	font-weight:200;
+	font-size: 30px;
+	color: #fff;
+	padding-top:20%;
+	padding-bottom:5%;
+}
+
+
 /* Set a style for all buttons */
 button {
 	margin: 0 auto;
-  background-color: transparent;
-	border:3px solid white;
+  background-color: #E21A2B;
   padding: 5px;
-  margin: 200px 0;
+  margin-top: 20px;
   cursor: pointer;
   width: 100%;
 	font-weight:500;

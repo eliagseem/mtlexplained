@@ -100,7 +100,7 @@ a, button {
 	margin-top:-5px;
 	left: 30px;
 	padding-left: 30px;
-	top: 30px;
+	top: 45px;
 	z-index: 2;
 	width: 7%;
 }
@@ -110,10 +110,11 @@ a, button {
 	width: 50%;
 	position: relative;
 	text-align: center;
-	padding-top: 15px;
+	padding-top: 40px;
+    padding-bottom: 15px;
 	font-size: 35px;
 	font-size: 4vw;
-	font-weight: 400;
+	font-weight: 300;
 	z-index: 1;
 }
 
@@ -121,7 +122,7 @@ a, button {
 	position: absolute;
 	float: right;
 	right: 25px;
-	top: 33px;
+	top: 45px;
 	margin-top:-5px;
 	z-index: 2;
 	width: 7%;
@@ -145,13 +146,15 @@ a, button {
 	margin: 0;
 	padding: 0;
 	padding-right:20px;
+    height: 200px;
 }
 
 .usernameprof {
-	padding-top: 1px;
+	padding-top: 40px;
 	font-weight: 500;
 	color: white;
 	font-size: 40px;
+    text-transform: uppercase;
 }
 
 .descrprof {
@@ -162,9 +165,10 @@ a, button {
 	text-align: left;
 	color: white;
 	font-size: 30px;
+    text-transform: capitalize;
 	padding-right: 100px;
 	padding-bottom: 0px;
-	line-height: 0.7;
+	line-height: 1.7;
 	position: relative;
 }
 
@@ -260,7 +264,7 @@ p {
 	float: left;
 	left: 30px;
 	top: 35px;
-	z-index: 2;
+	z-index: 10;
 }
 
 .settings {
@@ -322,6 +326,7 @@ p {
 	color: black;
 	font-size: 26px;
 	padding-top: 10px;
+	text-transform: uppercase;
 }
 
 .commentInfo {
@@ -330,8 +335,9 @@ p {
 	display: inline-block;
 	font-weight: 200;
 	text-align: left;
-	color: black;
+	color: #E21A2B;
 	font-size: 26px;
+	text-transform: uppercase;
 }
 
 .commentInfoV {
@@ -342,6 +348,7 @@ p {
 	text-align: left;
 	color: #E21A2B;
 	font-size: 26px;
+	text-transform: uppercase;
 }
 
 
@@ -414,6 +421,7 @@ p {
 	height:50%;
 	padding-left:10px;
 	margin: 0 auto;
+	z-index: 10;
 }
 
 .triangle-up {
@@ -481,9 +489,9 @@ p {
 .inputCommentBox {
 	margin-top: 20px;
 	padding-top:10px;
-	padding-bottom:10px;
-	padding-left:10px;
-	padding-right:5px;
+	padding-bottom:20px;
+	padding-left:20px;
+	padding-right:10px;
 	background:#F2F2F2;
 	margin:0 auto;
 	width:75%;
@@ -502,7 +510,7 @@ textarea {
 	border: none;
 	background: transparent;
 	font-weight:200;
-	font-size: 24px;
+	font-size: 30px;
 	color: black;
 	font-weight:200;
 }

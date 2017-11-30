@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <title>Profile</title>
 <link href="style.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Oswald:200,500" rel="stylesheet">
-		  
+<link href="https://fonts.googleapis.com/css?family=Oswald:200,300,500" rel="stylesheet">
+
 <script src="js/jquery.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js'></script>
@@ -20,7 +20,7 @@
 	}
 
 	var app = angular.module('profilePosts', ['firebase', 'angular.filter']);
-	app.controller('profileController', function($scope, $firebaseArray) {					
+	app.controller('profileController', function($scope, $firebaseArray) {
 		$scope.ref2 =  new Firebase("https://mtlexplained.firebaseio.com/").child('/posts');
 		$scope.posts = $firebaseArray($scope.ref2);
 
@@ -34,10 +34,10 @@
 					$scope.postsArray.push(obj);
 				}
 			});
-		}); 
+		});
 
 		$scope.goToPost = function(postid) {
-			window.location.href = './post_detail.html?postId=' + postid;            
+			window.location.href = './post_detail.html?postId=' + postid;
 		}
 	});
 	</script>
@@ -45,21 +45,21 @@
 
 <body onload="fillVals();">
 	<div class="pageprofile">
-	<div class="mapprofile"><a href="map.html"><img src="images/map.png" alt="map" width="60%" height="60%"></a></div>
+	<div class="mapprofile"><a href="map.html"><img src="images/map.png" alt="map" width="90%" height="90%"></a></div>
 	<div class="titleprofile"><p>MONTREAL EXPLAINED</p></div>
-	<div class="settingsprofile"><img src="images/settings.png" alt="settings" width="60%" height="60%"></div>
+	<div class="settingsprofile"><img src="images/settings.png" alt="settings" width="80%" height="80%"></div>
 
 	<!-- Profile pic bar -->
 	<div class="barprofile">
-		<div class="profile"><img src="images/profile_pic_placeholder.png" alt="Profile Photo" width="auto" height="auto"></div>
+		<div class="profile"><img src="images/profile_pic_placeholder.png" alt="Profile Photo" width="auto" height="100%"></div>
 		<div class="usernameprof"><p id="usernamePara"></p></div>
 		<div class="descrprof"><p id="userRolePara"></p></div>
 	</div>
-		
+
 	<div ng-app='profilePosts' class="row">
-		<div ng-controller='profileController' class="column">		
+		<div ng-controller='profileController' class="column">
 			<div ng-repeat="post in postsArray | orderBy: '-date'">
-				<img ng-src="{{post.base64}}" style="width:100%" ng-click="goToPost(post.$id)">          
+				<img ng-src="{{post.base64}}" style="width:100%" ng-click="goToPost(post.$id)">
 				<a class="btn btn-danger btn-block" ng-click="deletepost(post.$id)">Delete</a>
 			</div>
 	</div>

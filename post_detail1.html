@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>MONTRAL EXPLAINED</title>
-  
+  <link href="https://fonts.googleapis.com/css?family=Oswald:200,500" rel="stylesheet">
   <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
   <link rel='stylesheet prefetch' href='https://fezvrasta.github.io/bootstrap-material-design/dist/css/bootstrap-material-design.css'>
   <link rel="stylesheet" href="css/style.css">
-  
+
 </head>
 
 <body>
@@ -21,12 +21,12 @@
             var url_string = window.location.href;
             var url = new URL(url_string);
             var c = url.searchParams.get("postId");
-            
+
             var ref =  new Firebase("https://mtlexplained.firebaseio.com/").child('/posts').orderByChild('date');
             ref.once('value',function(snap) {
                 snap.forEach(function(item) {
                     var itemVal = item.val();
-                    
+
                     if(item.key() == c){
                         post = item.val();
                         console.log(post.base64);
@@ -38,9 +38,9 @@
 
       <div class="col-xs-12 col-sm-6 col-md-3">
         <img id="postId" class="postImage">
-        
+
         {{post.description}}<br>
-        Location: {{post.locName}}            
+        Location: {{post.locName}}
         <a class="btn btn-danger btn-block" ng-click="deletepost(post.$id)">Delete</a>
       </div>
 

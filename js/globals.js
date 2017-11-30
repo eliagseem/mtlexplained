@@ -31,7 +31,7 @@ mapStyle = [
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#757575"
+          "color": "#212121"
         }
       ]
     },
@@ -48,7 +48,7 @@ mapStyle = [
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#757575"
+          "color": "#212121"
         }
       ]
     },
@@ -195,4 +195,4 @@ mapStyle = [
         }
       ]
     }
-  ];  
+  ];

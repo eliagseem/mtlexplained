@@ -54,7 +54,7 @@
           "elementType": "geometry",
           "stylers": [
             {
-              "color": "#757575"
+              "color": "#212121"
             }
           ]
         },
@@ -80,7 +80,7 @@
           "elementType": "labels.text.fill",
           "stylers": [
             {
-              "color": "#bdbdbd"
+              "color": "#212121"
             }
           ]
         },
@@ -89,7 +89,7 @@
           "elementType": "labels.text.fill",
           "stylers": [
             {
-              "color": "#757575"
+              "color": "#bdbdbd"
             }
           ]
         },
@@ -220,7 +220,7 @@
         icon: 'user.png'
         });
 
-        var geocoder = new google.maps.Geocoder;                
+        var geocoder = new google.maps.Geocoder;
         geocoder.geocode({'location': pos}, function(results, status) {
             if (status === 'OK') {
               if (results[0]) {

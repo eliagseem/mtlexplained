@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald:200,500" rel="stylesheet">
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
 
@@ -17,7 +17,7 @@
 <meta charset="utf-8">
 <title>Montreal Explained</title>
 <link href="style.css" rel="stylesheet" type="text/css">
-<script src="js/globals.js"></script>      
+<script src="js/globals.js"></script>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
 			var url_string = window.location.href;
 			var url = new URL(url_string);
 			var c = url.searchParams.get("postId");
-						
+
 			$scope.ref2 =  new Firebase("https://mtlexplained.firebaseio.com/").child('/posts').child(c);
 
 			$scope.ref2.once('value', function(snapshot) {
@@ -87,7 +87,7 @@
 	</div>
 
 	<div ng-app='postDetails'>
-	<div ng-controller="detailsController">	
+	<div ng-controller="detailsController">
 		<div ng-repeat="comment in commentsList | toArray | orderBy: '-rating'">
 			<div class="commenterBox">
 					<div class="ratingBox">
@@ -97,20 +97,20 @@
 								<div class="triangle-down" onclick="uncounter()"></div>
 							</div>
 						</div>
-			
+
 					<div class="commentDesc">{{comment.cDescription}}</div>
 					<div class="commentUser">{{comment.username}}</div>
 					<div class="commentInfoV"> | {{comment.role}}</div>
 					<div class="commentDesc"><div class="lineBreak"></div></div>
-			</div>						
+			</div>
 		</div>
-		
+
 
 	<div class="buffer"></div>
 
 	<div class="commentButton">
-		<a ng-click="postcomment()" style="padding-left:25px;">POST</a>			
-		<div class="inputCommentBox">			
+		<a ng-click="postcomment()" style="padding-left:25px;">POST</a>
+		<div class="inputCommentBox">
 			<textarea id="commentArea" rows="4" cols="50" name="comment" form="usrform" maxlength="200" placeholder="answer the question"
 			onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" ></textarea>
 		</div>
@@ -120,12 +120,13 @@
 
 <script>
 	var add = (function () {
-		var counter = 12;
+		document.getElementById("ratingnumber").value;
+		var counter = 0;
 		return function () {return counter += 1;}
 	})();
 
 	var subtract = (function () {
-		var counter = 12;
+		var counter = 0;
 		return function () {return counter -= 1;}
 	})();
 

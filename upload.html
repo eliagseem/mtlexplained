@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald:200,500" rel="stylesheet">
 <meta charset="utf-8">
 <title>Upload</title>
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -19,41 +19,41 @@
 
 	      $("document").ready(function(){
           $("#nameImg").change(function() {
-			
+
 				var sFileName = $("#nameImg").val();
 				if (sFileName.length > 0) {
-			
+
 				var blnValid = false;
-			
+
 				for (var j = 0; j < _validFileExtensions.length; j++) {
-			
+
 					var sCurExtension = _validFileExtensions[j];
-			
+
 					if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
-			
+
 					blnValid = true;
 					var filesSelected = document.getElementById("nameImg").files;
-					
+
 					if (filesSelected.length > 0) {
 						var fileToLoad = filesSelected[0];
 						var fileReader = new FileReader();
-			
+
 						fileReader.onload = function(fileLoadedEvent) {
 							document.getElementById("previewImg").src = fileLoadedEvent.target.result;
 						};
-			
+
 						fileReader.readAsDataURL(fileToLoad);
 					}
 					break;
 					}
 				}
-			
+
 				if (!blnValid) {
 					alert('File is not valid');
 					return false;
 				}
 				}
-			
+
 				return true;
         });
     });
@@ -76,16 +76,16 @@
 						onfocus="this.placeholder = ''" onblur="this.placeholder = 'ask a question'" ></textarea>
 					</div>
 
-					<div class="buttonBottom">						
+					<div class="buttonBottom">
 						<label for="nameImg" class="column-left">
 							SHOOT
 						</label>
 						<input type="file" class="inputfile" name="file" id="nameImg" accept="image/*"/>
 
 						<button class="column-right" type="submit">
-							SEND						
+							SEND
 						</button>
-					</div>							
+					</div>
 				</form>
 			</div>
 		</div>
