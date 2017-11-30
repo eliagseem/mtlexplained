@@ -18,7 +18,7 @@
   <div class="settings"><img src="images/settingsw.png" alt="settings" width="auto" height="60"></div>
   <div class="mapHeader" id="locationHeader">MONTREAL EXPLAINED</div>
   <div class="borderHeader"></div>
-    <script src="js/globals.js"></script>
+  <script src="js/globals.js"></script>
 
     <div id="map"></div>
     <script>
@@ -135,16 +135,13 @@
                     var fileReader = new FileReader();
         
                     fileReader.onload = function(fileLoadedEvent) {
-                      var textAreaFileContents = document.getElementById(
-                        "textAreaFileContents"
-                      );
-
                       window.localStorage.setItem("uploadedPic", fileLoadedEvent.target.result);
+                      document.getElementById("nameImg").value = "";
+                      window.location.href = "upload.html";
                     };
         
                     fileReader.readAsDataURL(fileToLoad);
                   }
-                  break;
                 }
               }
         
@@ -152,9 +149,6 @@
                 alert('File is not valid');
               }
             }
-        
-            document.getElementById("nameImg").value = "";
-            window.location.href = "upload.html";
         });
     });
     </script>
