@@ -111,46 +111,6 @@
         infoWindow.open(map);
       }
 
-      var _validFileExtensions = [".jpg", ".jpeg", ".bmp", ".gif", ".png"];
-
-      $("document").ready(function(){
-          $("#nameImg").change(function() {
-            var sFileName = $("#nameImg").val();
-            var description = $("#nameDescription").val();
-            if (sFileName.length > 0) {
-        
-              var blnValid = false;
-        
-              for (var j = 0; j < _validFileExtensions.length; j++) {
-        
-                var sCurExtension = _validFileExtensions[j];
-        
-                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
-        
-                  blnValid = true;
-                  var filesSelected = document.getElementById("nameImg").files;
-                  
-                  if (filesSelected.length > 0) {
-                    var fileToLoad = filesSelected[0];
-                    var fileReader = new FileReader();
-        
-                    fileReader.onload = function(fileLoadedEvent) {
-                      window.localStorage.setItem("uploadedPic", fileLoadedEvent.target.result);
-                      document.getElementById("nameImg").value = "";
-                      window.location.href = "upload.html";
-                    };
-        
-                    fileReader.readAsDataURL(fileToLoad);
-                  }
-                }
-              }
-        
-              if (!blnValid) {
-                alert('File is not valid');
-              }
-            }
-        });
-    });
     </script>
 
 <!--AIzaSyBojJTaBY1BRYTSukQgz0RvSaLet5_6T9s-->
@@ -161,12 +121,13 @@
 
     <script src="style.json"></script>
 
-    <div class="buttonBottom">
-      <label for="nameImg" class="column-center">
-          <i class="material-icons icon column-center">camera</i>
-      </label>
-      <input type="file" class="inputfile" name="file" id="nameImg" accept="image/*"/>
-    </div>
+    <a href="upload.html">
+      <div class="buttonBottom">
+        <label class="column-center">
+            <p class="icon column-center">POST</p>
+        </label>
+      </div>
+    </a>
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js'></script>

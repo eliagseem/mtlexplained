@@ -1,17 +1,17 @@
 .column-left{ 
   float: left; 
-  width: 20%; 
+  width: 40%; 
   color:white; 
+  font-size:100px;  
   text-align:center;
-  padding-top:1.5%;  
 }
 .column-right{ 
   float: right; 
-  width: 20%; 
+  width: 40%; 
   color:white; 
   text-align:center;
+  font-size:100px;  
   padding-left:4%;
-  padding-top:1.5%; 
 }
 
 .column-center{ 
@@ -22,7 +22,8 @@
 }
 
 .icon{
-  color:white; font-size:100px;
+  color:white; 
+  font-size:100px;
   vertical-align: middle;  
 }
 
