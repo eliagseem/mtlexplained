@@ -5,24 +5,45 @@
 <meta charset="utf-8">
 <title>Upload</title>
 <link href="style.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script src="js/globals.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js'></script>
+<script src='https://cdn.firebase.com/js/client/2.2.4/firebase.js'></script>
+<script src="js/angularfire.min.js"></script>
+<script  src="js/index.js"></script>
+
+<script>
+	function takePhoto(){
+		var fileSelected = window.localStorage.getItem("uploadedPic");			
+			document.getElementById("previewImg").src = fileSelected;
+		}
+</script>
+
 </head>
 
-<body>
+<body onload="takePhoto();">
 	<div class="page">
 		<div class="map"><a href="map.html"><img src="images/backw.png" alt="back" width="auto" height="50"></a></div>
 		<div class="settings"><img src="images/settingsw.png" alt="settings" width="auto" height="60"></div>
-	<div class="postImg"><img src="images/placeholder.jpg" width="100%" height="100%"></div>
 
+	<div ng-app='angularFire'>
+		<div ng-controller='base64Ctrl'>
+			<form ng-submit="uploadPost()">
+				<div class="postImg"><img id="previewImg" src="images/placeholder.jpg" width="100%" height="100%"></div>
+										
+				<div class="weNeedInfo">we need some details...</div>
+				<input type="file" class="inputfile" name="file" id="nameImg" accept="image/*"/>						
+				<div class="inputCaptionBox">
+					<textarea id="nameDescription" rows="4" cols="50" name="comment" form="usrform" maxlength="200" placeholder="ask a question"
+					onfocus="this.placeholder = ''" onblur="this.placeholder = 'ask a question'" ></textarea>
+				</div>
 
-	<div class="weNeedInfo">we need some details...</div>
-
-	<div class="inputCaptionBox">
-		<textarea rows="4" cols="50" name="comment" form="usrform" maxlength="200" placeholder="ask a question"
-		onfocus="this.placeholder = ''" onblur="this.placeholder = 'ask a question'" ></textarea>
+				<a class="buttonBottom" href="post.html"><button type="submit" style="font-size:100px;">SHARE</button></a>							
+			</form>
+		</div>
 	</div>
-
-	<a class="bottomButton" href="post.html">SHARE</a>
-</div>
 
 </body>
 </html>

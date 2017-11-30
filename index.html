@@ -1,41 +1,40 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<link rel="stylesheet" href="login.css" />
-<title>Montreal Explained</title>
-<script src="js/globals.js"></script>   
-<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">   
-</head>
+  <head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="login.css" />
+  <title>Montreal Explained</title>
+  <script src="js/globals.js"></script>   
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">   
+  </head>
 
-<body>
-<div class="bg"></div>
-<script>
-    function setUserName() {
-      var uName = "";
-      uName = document.getElementById("userNameField").value;
+  <body>
+  <div class="bg"></div>
+  <script>
+      function setUserName() {
+        var uName = "";
+        uName = document.getElementById("userNameField").value;
 
-      if(uName == "") {
-        uName = "user92893";
+        if(uName == "") {
+          uName = "user92893";
+        }
+
+        window.localStorage.setItem('userName', uName);
+        window.location.href = "iama.html";
       }
+    </script>
+    <div class="container">
+    <div class="logo"><img src="images/logo2.png" style="width:112%; height:100%;" alt=""/></div>
+        <div class="textContainer">
+          <input type="text" placeholder="username" name="uname" id="userNameField" required>
+          <input type="password" placeholder="password" name="psw" required>
 
-      var store = window.localStorage;
-      window.localStorage.setItem('userName', uName);
-      window.location.href = "iama.html";
-    }
-  </script>
-  <div class="container">
-	<div class="logo"><img src="images/logo2.png" style="width:112%; height:100%;" alt=""/></div>
-      <div class="textContainer">
-        <input type="text" placeholder="username" name="uname" id="userNameField" required>
-        <input type="password" placeholder="password" name="psw" required>
-
-        <button onclick="setUserName();">LOG IN</button>
-        <div class="loginOptbox">
-          <div class="fb"><img src="images/fb.png" style="width:auto; height:auto;" alt="fb" onclick="setUserName();"></div>
-          <div class="google"><img src="images/google.png" style="width:auto; height:auto;" alt="google" onclick="setUserName();"></div>
-        </div>
+          <button onclick="setUserName();">LOG IN</button>
+          <div class="loginOptbox">
+            <div class="fb"><img src="images/fb.png" style="width:auto; height:auto;" alt="fb" onclick="setUserName();"></div>
+            <div class="google"><img src="images/google.png" style="width:auto; height:auto;" alt="google" onclick="setUserName();"></div>
+          </div>
+      </div>
     </div>
-	</div>
-</body>
+  </body>
 </html>

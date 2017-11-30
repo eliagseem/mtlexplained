@@ -4,30 +4,66 @@
 <meta charset="utf-8">
 <title>Profile</title>
 <link href="style.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Oswald:200,500" rel="stylesheet">
+		  
+<script src="js/jquery.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js'></script>
+<script src='https://cdn.firebase.com/js/client/2.2.4/firebase.js'></script>
+<script src="js/angularfire.min.js"></script>
+<script  src="js/index.js"></script>
+
+<script>
+	function fillVals(){
+		document.getElementById("usernamePara").innerHTML=window.localStorage.getItem('userName');
+		document.getElementById("userRolePara").innerHTML=window.localStorage.getItem('userRole');
+	}
+
+	var app = angular.module('profilePosts', ['firebase', 'angular.filter']);
+	app.controller('profileController', function($scope, $firebaseArray) {					
+		$scope.ref2 =  new Firebase("https://mtlexplained.firebaseio.com/").child('/posts');
+		$scope.posts = $firebaseArray($scope.ref2);
+
+		$scope.postsArray = [];
+
+		// for each user that is online, output to the console
+		$scope.ref2.on('value', function(gamesSnapshot) {
+			gamesSnapshot.forEach(function (snapshot) {
+				var obj = snapshot.val();
+				if (obj.username == window.localStorage.getItem('userName')) {
+					$scope.postsArray.push(obj);
+				}
+			});
+		}); 
+
+		$scope.goToPost = function(postid) {
+			window.location.href = './post_detail.html?postId=' + postid;            
+		}
+	});
+	</script>
 </head>
 
-<body>
-	<div class="page">
-	<div class="map"><a href="map.html"><img src="images/map.png" alt="map" width="58" height="51"></a></div>
-	<div class="title"><p>MONTREAL EXPLAINED</p></div>
-	<div class="settings"><img src="images/settings.png" alt="settings" width="51" height="50"></div>
-	<div class="bar">
-		<div class="profile"><img src="images/profile_pic.png" alt="pic" width="248" height="153"></div>
-		<div class="username"><p>ROSEFORMYLOVE</p></div>
-		<div class="descr"><p>ACTOR, DAD, SOAP ENTHUSIAST</p></div>
+<body onload="fillVals();">
+	<div class="pageprofile">
+	<div class="mapprofile"><a href="map.html"><img src="images/map.png" alt="map" width="60%" height="60%"></a></div>
+	<div class="titleprofile"><p>MONTREAL EXPLAINED</p></div>
+	<div class="settingsprofile"><img src="images/settings.png" alt="settings" width="60%" height="60%"></div>
+
+	<!-- Profile pic bar -->
+	<div class="barprofile">
+		<div class="profile"><img src="images/profile_pic_placeholder.png" alt="Profile Photo" width="auto" height="auto"></div>
+		<div class="usernameprof"><p id="usernamePara"></p></div>
+		<div class="descrprof"><p id="userRolePara"></p></div>
 	</div>
-	<!-- Photo Grid -->
-	<div class="row"> 
-  		<div class="column">
-			<img src="images/test1.jpg" alt="1" style="width:100%">
-			<img src="images/test2.jpg" alt="2" style="width:100%">
-			<img src="images/test3.jpg" alt="3" style="width:100%">
-			<img src="images/test4.jpg" alt="4" style="width:100%">
-			<img src="images/test5.jpg" alt="5" style="width:100%">
-			<img src="images/test7.jpg" alt="7" style="width:100%">
-			<img src="images/test8.jpg" alt="8" style="width:100%">
-		</div>  
+		
+	<div ng-app='profilePosts' class="row">
+		<div ng-controller='profileController' class="column">		
+			<div ng-repeat="post in postsArray | orderBy: '-date'">
+				<img ng-src="{{post.base64}}" style="width:100%" ng-click="goToPost(post.$id)">          
+				<a class="btn btn-danger btn-block" ng-click="deletepost(post.$id)">Delete</a>
+			</div>
 	</div>
-	</div>
+</div>
+
 </body>
 </html>

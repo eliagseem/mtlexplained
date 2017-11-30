@@ -15,8 +15,8 @@
 }
 
 .column-center{ 
-  display: inline-block; 
-  width: 60%; 
+  margin-top:-65px;
+  width: 100%; 
   color:white;
   font-size:50px;
 }
