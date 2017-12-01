@@ -23,7 +23,7 @@ body, html {
 	background: -moz-linear-gradient(#808080, #C0C0C0); /* For Firefox 3.6 to 15 */
 	background: linear-gradient(#808080, #C0C0C0); /* Standard syntax */
 	width:100%;
-	height:100%;
+	height:150%;
 	background-size: cover;
 }
 
