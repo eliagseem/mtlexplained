@@ -4,7 +4,7 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald:200,500" rel="stylesheet">
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-
+<link rel="icon" href="favicon.png">      
 <script src="js/jquery.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js'></script>
@@ -70,6 +70,24 @@
 					}
 				});
 			}
+
+			$scope.upvote = function(commentid) {
+				$scope.commentsList.forEach(function(childSnapshot) {
+					if (childSnapshot.$id == commentid) {
+						var newRating = childSnapshot.rating++;
+						$scope.ref2.child("comments").child(commentid).child("rating").set(newRating);
+					}
+				});
+			}	
+			
+			$scope.downvote = function(commentid) {
+				$scope.commentsList.forEach(function(childSnapshot) {
+					if (childSnapshot.$id == commentid) {
+						var newRating = childSnapshot.rating--;
+						$scope.ref2.child("comments").child(commentid).child("rating").set(newRating);
+					}
+				});
+			}	
 		});
 		</script>
 
@@ -93,8 +111,8 @@
 					<div class="ratingBox">
 						<div class="rating" id="ratingnumber">{{comment.rating}}</div>
 							<div class="triangles">
-								<div class="triangle-up" onclick="counter()"></div>
-								<div class="triangle-down" onclick="uncounter()"></div>
+								<div class="triangle-up" ng-click="upvote(comment.$id)"></div>
+								<div class="triangle-down" ng-click="downvote(comment.$id)"></div>
 							</div>
 						</div>
 
@@ -117,28 +135,6 @@
 	</div>
 	</div>
 	</div>
-
-<script>
-	var add = (function () {
-		document.getElementById("ratingnumber").value;
-		var counter = 0;
-		return function () {return counter += 1;}
-	})();
-
-	var subtract = (function () {
-		var counter = 0;
-		return function () {return counter -= 1;}
-	})();
-
-	function counter(){
-		document.getElementById("ratingnumber").innerHTML = add();
-	}
-
-	function uncounter(){
-		document.getElementById("ratingnumber").innerHTML = subtract();
-	}
-</script>
-
 </div>
 
 </body>

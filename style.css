@@ -560,3 +560,16 @@ textarea:focus, input:focus{
 	width:60%;
 	height:50%;
 }
+
+.nothingHere {
+	position:fixed;
+	text-align: center;
+	width:100%;
+	margin:0;
+	padding:0;
+	color: #aaa;
+	font-size: 60px;
+	font-weight:200;
+	padding-top:20%;
+	z-index:-100;
+}

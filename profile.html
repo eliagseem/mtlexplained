@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Profile</title>
+<link rel="icon" href="favicon.png">    
 <link href="style.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,500" rel="stylesheet">
 
@@ -31,13 +32,26 @@
 			gamesSnapshot.forEach(function (snapshot) {
 				var obj = snapshot.val();
 				if (obj.username == window.localStorage.getItem('userName')) {
-					$scope.postsArray.push(obj);
+					$scope.postsArray.push(snapshot);
 				}
 			});
 		});
 
 		$scope.goToPost = function(postid) {
 			window.location.href = './post_detail.html?postId=' + postid;
+		}
+
+		$scope.deletepost = function(postid) {
+			var r = confirm("Do you want to remove this image ?");
+			if (r == true) {
+			$scope.posts.forEach(function(childSnapshot) {
+				if (childSnapshot.$id == postid) {
+					$scope.posts.$remove(childSnapshot).then(() => {
+					window.location.reload();
+				});
+				}
+			});
+			}
 		}
 	});
 	</script>
@@ -56,13 +70,16 @@
 		<div class="descrprof"><p id="userRolePara"></p></div>
 	</div>
 
+	<div class="nothingHere">there's nothing here yet</div>		
+
 	<div ng-app='profilePosts' class="row">
 		<div ng-controller='profileController' class="column">
-			<div ng-repeat="post in postsArray | orderBy: '-date'">
-				<img ng-src="{{post.base64}}" style="width:100%" ng-click="goToPost(post.$id)">
-				<a class="btn btn-danger btn-block" ng-click="deletepost(post.$id)">Delete</a>
+			<div ng-repeat="post in postsArray | toArray | orderBy: '-date'">
+				<img ng-src="{{post.val().base64}}" style="width:100%" ng-click="goToPost(post.key())">
+				<button class="button" ng-click="deletepost(post.key())">Delete</button>
 			</div>
 	</div>
+
 </div>
 
 </body>

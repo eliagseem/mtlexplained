@@ -34,13 +34,14 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
 
                   $scope.posts.$add({
                     date: Firebase.ServerValue.TIMESTAMP,
+                    dateTag: Date.now(),
                     base64: fileLoadedEvent.target.result,
                     description: description,
                     location: JSON.parse(window.localStorage.getItem("userLoc")),
                     locName: window.localStorage.getItem("locTag"),
                     role: window.localStorage.getItem('userRole'),
                     username: window.localStorage.getItem('userName'),
-                    profilePic: 'images/loading.png'
+                    profilePic: 'https://firebasestorage.googleapis.com/v0/b/mtlexplained.appspot.com/o/blank.png?alt=media&token=189d8183-79c1-44f8-8876-12e162ca291a'
                   }).then(result =>{
                     window.location.href = './post_detail.html?postId=' + result.key();
                   });
@@ -60,17 +61,4 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
 
         return true;
     }
-
-  $scope.deletepost = function(postid) {
-    var r = confirm("Do you want to remove this image ?");
-    if (r == true) {
-      $scope.posts.forEach(function(childSnapshot) {
-        if (childSnapshot.$id == postid) {
-            $scope.posts.$remove(childSnapshot).then(function(ref) {
-              ref.key() === childSnapshot.$id;
-            });
-        }
-      });
-    }
-  }
 });
