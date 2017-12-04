@@ -73,11 +73,11 @@
 	<div class="nothingHere">there's nothing here yet</div>		
 
 	<div ng-app='profilePosts' class="row">
-		<div ng-controller='profileController' class="column">
-			<div ng-repeat="post in postsArray | toArray | orderBy: '-date'">
-				<img ng-src="{{post.val().base64}}" style="width:100%" ng-click="goToPost(post.key())">
+		<div ng-controller='profileController'>
+			<div  ng-repeat="post in postsArray | toArray | orderBy: '-date'">
+				<img ng-src="{{post.val().base64}}" style="width:100%; height:100%;" ng-click="goToPost(post.key())">
 				<button class="button" ng-click="deletepost(post.key())">Delete</button>
-			</div>
+		</div>
 	</div>
 
 </div>
