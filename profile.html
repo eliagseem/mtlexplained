@@ -21,17 +21,18 @@
 	}
 
 	var app = angular.module('profilePosts', ['firebase', 'angular.filter']);
+
 	app.controller('profileController', function($scope, $firebaseArray) {
+
 		$scope.ref2 =  new Firebase("https://mtlexplained.firebaseio.com/").child('/posts');
 		$scope.posts = $firebaseArray($scope.ref2);
 
 		$scope.postsArray = [];
 
-		// for each user that is online, output to the console
 		$scope.ref2.on('value', function(gamesSnapshot) {
 			gamesSnapshot.forEach(function (snapshot) {
 				var obj = snapshot.val();
-				if (obj.username == window.localStorage.getItem('userName')) {
+				if (obj.username.toUpperCase() == window.localStorage.getItem('userName').toUpperCase()) {
 					$scope.postsArray.push(snapshot);
 				}
 			});
@@ -42,7 +43,7 @@
 		}
 
 		$scope.deletepost = function(postid) {
-			var r = confirm("Do you want to remove this image ?");
+			var r = confirm("Do you want to delete this post?");
 			if (r == true) {
 			$scope.posts.forEach(function(childSnapshot) {
 				if (childSnapshot.$id == postid) {

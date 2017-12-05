@@ -43,6 +43,7 @@ angularFire.controller("base64Ctrl", function($scope, $firebaseArray) {
                     username: window.localStorage.getItem('userName'),
                     profilePic: 'https://firebasestorage.googleapis.com/v0/b/mtlexplained.appspot.com/o/blank.png?alt=media&token=189d8183-79c1-44f8-8876-12e162ca291a'
                   }).then(result =>{
+                    //redirect to the post page once it's done being added!
                     window.location.href = './post_detail.html?postId=' + result.key();
                   });
                 };
